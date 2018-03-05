@@ -1,3 +1,5 @@
+'use strict';
+
 class HashMap {
   constructor(initialCapacity=8) {
     this.length = 0;
@@ -94,8 +96,36 @@ function main() {
   lor.set('HalfElven', 'Arwen');
   lor.set('Ent', 'Treebeard');
   // console.log(lor);
-  console.log(lor.get('Maiar'));
+  // console.log(lor.get('Maiar'));
 
 }
 
 main();
+
+// PALINDROME
+
+const constainKeyCheck = (key, hashMap) => {
+  for (let i=0; i<hashMap._slots.length; i++) {
+    if (hashMap._slots[i]) {
+      if(hashMap._slots[i].key === key) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+const palindromeCheck = string => {
+  const test = new HashMap();
+  for (let i=0; i<string.length; i++) {
+    if (constainKeyCheck(string[i], test)) {
+      test.set(string[i], test.get(string[i]) + 1);
+      console.log('running');
+    } else {
+      test.set(string[i], 1);
+    }
+  }
+  console.log(test);
+};
+
+palindromeCheck('racecar');

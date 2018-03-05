@@ -77,6 +77,32 @@ class HashMap {
       }
     }
   }
+
+  containKeyCheck(key) {
+    for (let i=0; i<this._slots.length; i++) {
+      if (this._slots[i]) {
+        if(this._slots[i].key === key) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  valueEvenOrOddCheck() {
+    let count = 0;
+    for (let i=0; i<this._slots.length; i++) {
+      if (this._slots[i]) {
+        if(this._slots[i].value % 2 === 1) {
+          count++;
+          if (count > 1) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
 }
 
 HashMap.MAX_LOAD_RATIO = 0.9;
@@ -104,28 +130,17 @@ main();
 
 // PALINDROME
 
-const constainKeyCheck = (key, hashMap) => {
-  for (let i=0; i<hashMap._slots.length; i++) {
-    if (hashMap._slots[i]) {
-      if(hashMap._slots[i].key === key) {
-        return true;
-      }
-    }
-  }
-  return false;
-};
+// const palindromeCheck = string => {
+//   const test = new HashMap();
+//   for (let i=0; i<string.length; i++) {
+//     if (test.containKeyCheck(string[i])) {
+//       test.set(string[i], test.get(string[i]) + 1);
+//     } else {
+//       test.set(string[i], 1);
+//     }
+//   }
+//   return test.valueEvenOrOddCheck();
+// };
 
-const palindromeCheck = string => {
-  const test = new HashMap();
-  for (let i=0; i<string.length; i++) {
-    if (constainKeyCheck(string[i], test)) {
-      test.set(string[i], test.get(string[i]) + 1);
-      console.log('running');
-    } else {
-      test.set(string[i], 1);
-    }
-  }
-  console.log(test);
-};
+// console.log(palindromeCheck('racecar'));
 
-palindromeCheck('racecar');

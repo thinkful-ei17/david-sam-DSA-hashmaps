@@ -103,6 +103,14 @@ class HashMap {
     }
     return true;
   }
+
+  compilingValues(arr) {
+    for (let i=0; i<this._slots.length; i++) {
+      if (this._slots[i]) {
+        arr.push(this._slots[i].value);
+      }
+    }
+  }
 }
 
 HashMap.MAX_LOAD_RATIO = 0.9;
@@ -144,3 +152,21 @@ main();
 
 // console.log(palindromeCheck('racecar'));
 
+// ANAGRAM
+
+// const anagramGroup = array => {
+//   const test = new HashMap();
+//   const finalArr = [];
+//   for (let i=0; i<array.length; i++) {
+//     let sorted = [...array[i]].sort((a,b) => a.localeCompare(b)).join();
+//     if (test.containKeyCheck(sorted)) {
+//       test.set(sorted, [...test.get(sorted), array[i]]);
+//     } else {
+//       test.set(sorted, [array[i]]);
+//     }
+//   }
+//   test.compilingValues(finalArr);
+//   return finalArr;
+// };
+
+// console.log(anagramGroup(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
